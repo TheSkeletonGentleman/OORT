@@ -138,11 +138,11 @@ impl Fighter {
             // Fly towards the target.
             unpredictible_trajectory(average_position, contact.velocity, true);
 
+            // The missile will fly towards this position and acquire the target with radar
+            // when close enough.
+            send(make_orders(average_position, contact.velocity));
             // Missiles
             if reload_ticks(1) == 0 {
-                // The missile will fly towards this position and acquire the target with radar
-                // when close enough.
-                send(make_orders(average_position, contact.velocity));
                 fire(1);
             }
             turn_to(dp.angle());
@@ -208,6 +208,8 @@ impl Missile {
     }
 
     pub fn tick(&mut self) {
+        debug!("enemy pos: {0:?}", self.target_position);
+        debug!("enemy vel: {0:?}", self.target_velocity);
         self.target_position += self.target_velocity * TICK_LENGTH;
 
         let target_classe = Class::Fighter;
@@ -228,11 +230,19 @@ impl Missile {
                 let enemy_vel_x= msg[2];
                 let enemy_vel_y= msg[3];
 
-                self.target_position = vec2(enemy_pos_x, enemy_pos_y);
-                self.target_velocity = vec2(enemy_vel_x, enemy_vel_y);
+                // Gestions des erreurs
+                let received_target_position = vec2(enemy_pos_x, enemy_pos_y);
+                let received_target_velocity = vec2(enemy_vel_x, enemy_vel_y);
 
-                debug!("enemy pos: {0:?}", self.target_position);
-                debug!("enemy vel: {0:?}", self.target_velocity);
+                debug!("received pos: {0:?}", received_target_position);
+                debug!("received vel: {0:?}", received_target_velocity);
+
+                if received_target_position.x < world_size() && received_target_position.x > -world_size() {
+                    self.target_position = received_target_position;
+                }
+                if received_target_velocity.x < self.target_velocity.x + 1000.0 {
+                    self.target_velocity = received_target_velocity;
+                }
             }
             set_radar_heading(
                 (self.target_position - position()).angle() + rand(-1.0, 1.0) * TAU / 32.0,
@@ -242,6 +252,7 @@ impl Missile {
         
         // dans tous les cas on va à la position donnée.
         seek(self.target_position, self.target_velocity, true);
+        activate_ability(Ability::Boost);
         // si on est à proximité de l'ennemi on explose
         if position().distance(self.target_position) / velocity().length() < 0.1 {
             explode();
