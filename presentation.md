@@ -126,7 +126,7 @@ Le vaisseau comporte trois états.
 - Cette fonction est basée sur *"seek"* à la différence que nous utilisont comme point où se diriger notre position actuelle additionnée à :
 - (en x) le cosinus de la distance entre nous et l'ennemi
 - (en y) le sinus de la distance à laquelle nous souhaitons passer
-![bg right:35% 90%](trigo_re.png)
+![bg right:35% 90%](trigo.png)
 
 ---
 # Conclusion
