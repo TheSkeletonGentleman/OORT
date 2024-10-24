@@ -1,11 +1,7 @@
 use oort_api::prelude::*;
 
 const BULLET_SPEED: f64 = 1000.0; // m/s
-<<<<<<< HEAD
-
-=======
 const RANDOM_SEED: u64 = 2397868;
->>>>>>> c1e6fd879548593a244d4c9a6c431ac36c255fea
 
 // This enum stores a different struct for each ship class.
 pub enum Ship {
@@ -53,11 +49,7 @@ impl Fighter {
             move_target: vec2(0.0, 0.0),
             enemy_ang: 0.0,
             enemy_latest_pos: Vec::new(),
-<<<<<<< HEAD
-            radio_channel: (9),
-=======
             radio_channel: 4,
->>>>>>> c1e6fd879548593a244d4c9a6c431ac36c255fea
             missile_latest_pos: Vec::new(),
             state: State::Attack,
             tick_counter: 0,
@@ -223,11 +215,7 @@ impl Missile {
         Self {
             target_position,
             target_velocity,
-<<<<<<< HEAD
-            radio_channel: (9),
-=======
             radio_channel: 4,
->>>>>>> c1e6fd879548593a244d4c9a6c431ac36c255fea
         }
     }
 
