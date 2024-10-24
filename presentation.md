@@ -89,6 +89,17 @@ Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comporte
 - Formule : 1 - ((((distance_voulue * 1.25) - 20'000) / 10)  * 0.00125)
 
 ---
+### R&D : *Radar pt3*
+- Nous avons aussi fait une aproximation de la position de l'ennemi.
+- À chaque visualisation de l'ennemi on décale tout le tableau de un cran vers la gauche et on push la nouvelle valeur à la fin du tableau.
+- La position utilisée par tout le code est une moyenne non pondérée des 10 dernières positions enregistrées de l'ennemi.
+
+---
+### R&D : *Radar pt4*
+- Pour plus de clareté visuelle un visweur est également dessiné sur l'ennemi / à sa dernière position connue.
+![bg right:50% 95%](Ciblage.png)
+
+---
 ### R&D : *Radio*
 - La radio quand à elle change desormais de canal à chaque tick afin de ne pas se faire écraser par un potentiel ennemi qui utiliserai le même.
 
