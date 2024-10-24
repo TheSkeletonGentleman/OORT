@@ -80,13 +80,20 @@ impl Fighter {
             }
             draw_line(vec2(average_position[0], average_position[1] - 100000.0), vec2(average_position[0], average_position[1] + 100000.0), 0xf0f0f0);
         }
-        
+
         // State manager
         match self.state {
             State::Search =>self.search_mode(),
             State::Attack =>self.attack_mode(),
             State::Defend =>self.defend_mode(),
             _=>{},
+        }
+
+        // Don't go near the border
+        // fight+, leaderborad-
+        let border = 30000.0;
+        if position().x > border || position().x < -border || position().y > border || position().y < -border {
+            seek(vec2(0.0,0.0), vec2(0.0,0.0), true);
         }
         
         self.tick_counter += 1;
