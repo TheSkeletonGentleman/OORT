@@ -96,7 +96,7 @@ Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comporte
 
 ---
 ### R&D : *Radar pt4*
-- Pour plus de clareté visuelle un visweur est également dessiné sur l'ennemi / à sa dernière position connue.
+- Pour plus de clareté visuelle un viseur est également dessiné sur l'ennemi / à sa dernière position connue.
 ![bg right:50% 95%](Ciblage.png)
 
 ---
