@@ -81,7 +81,6 @@ Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comporte
 ### R&D : *Radar*
 - Le radar a été amélioré afin de se redimentionner de manière à être le plus large tout en gardant une distance de sécutité derrière l'ennemi
 ![bg right:40% 80%](Radar_up_re.png)
-![bg right:40% 80%](Radar_up.png)
 
 ---
 ### R&D : *Radar pt2*
