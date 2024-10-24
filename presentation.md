@@ -95,34 +95,68 @@ Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comporte
 ![bg right:40% 80%](Missile.png)
 
 ---
+# R&D
+- Nous avons amélioré les éléments suivants:
+    - Radar
+    - Radio
+    - Missiles
+
+---
+### R&D : *Radar*
+- Le radar a été amélioré afin de se redimentionner de manière à être le plus large tout en gardant une distance de sécutité derrière l'ennemi
+![bg right:40% 80%](Radar_up.png)
+
+---
+### R&D : *Radio*
+La radio quand à elle change desormais de chaine à chaque tick afin de ne pas se faire écraser par un potentiel ennemi qui utiliserai la même chaine.
+
+---
+### R&D : *Missiles*
+- Les missiles font des calculs pour exploser cent millisecondes avant de toucher l'ennemi.
+- En faisant cela les shrapnell ont moins de chances de rater l'ennemi que le missile et lui infligent tout autant de dégats.
+![bg right:40% 80%](Shrapnell.png)
+
+---
 # Comportement
 Vaisseau comporte trois états
 
 ![w:20cm](Machine_etat.svg)
 
 ---
-### Recherche
-- Tous les 30 ticks le vaisseau passe dans ce mode
-- Le vaisseau va mettre son radar le plus large possible (un quart) et va faire un tour de scan en 4 ticks
-- Si un missile est détecté, le vaisseau passe en mode **Défense**
-- Sinon il retourne en mode **Attaque**
+### Attaque
+- En mode **attaque**, le vaisseau fait rotationner son radar afin de balayer l'horizon et il se dirige et tourne vers la dernière position connue de l'ennemi.
+- Si il y trouve un ennemi de type *"fighter"* il lui lance un missile et communique sa position par radio à tous les missiles.
+- Tous les 30 ticks le vaisseau passe en mode **recherche**
 
 ---
-### Attaque
-- En mode attaque, le vaisseau fait rotationner son radar afin de balayer l'horizon et il se dirige et tourne vers la dernière position connue de l'ennemi.
-- Si il y trouve un ennemi de type *"fighter"* il lui lance un missile et communique sa position par radio à tous les missiles.
+### Recherche
+- Le vaisseau va mettre son radar le plus large possible (un quart) et va faire un tour de scan en 4 ticks
+- Si un missile est détecté, le vaisseau passe en mode **défense**
+- Sinon il retourne en mode **attaque**
 
 ---
 ### Défense
-
+- En mode **défense**, le vaisseau va cibler le missile trouvé en recherche et essayer de le détruire
+- Si le missile est détruit, perdu de vue ou nous passe à coté (plus de 90° de différense avec l'ennemi) on retourne en **recherche**
 
 ---
 ### Mouvements
+- Le vaisseau suit trois comportements :
+    - en **recherche** et **défense**  on se laisse porter
+    - en **attaque** on utilise la fonction ***unpredictible_trajectory***
 
+---
+### *Unpredictible trajectory*
+- Cette fonction est basée sur *"seek"* à la différence que nous utilisont comme point où se diriger notre position actuelle additionnée à :
+- (en x) le cosinus de la distance entre nous et l'ennemi
+- (en y) le sinus de la distance à laquelle nous souhaitons passer
+![bg right:35% 90%](trigo.png)
 
 ---
 # Conclusion
-
+- Codage de vaisseau interessant
+- Meilleures compréhension de la trigonométrie
+- Classement pas mauvais :wink:
 
 ---
 # Questions ?

@@ -1,7 +1,6 @@
 use oort_api::prelude::*;
 
 const BULLET_SPEED: f64 = 1000.0; // m/s
-pub const MAX_USIZE: usize = 4294967295;
 
 
 // This enum stores a different struct for each ship class.
@@ -50,7 +49,7 @@ impl Fighter {
             move_target: vec2(0.0, 0.0),
             enemy_ang: 0.0,
             enemy_latest_pos: Vec::new(),
-            radio_channel: (MAX_USIZE - 46 as usize),
+            radio_channel: (9),
             missile_latest_pos: Vec::new(),
             state: State::Attack,
             tick_counter: 0,
@@ -203,7 +202,7 @@ impl Missile {
         Self {
             target_position,
             target_velocity,
-            radio_channel: (MAX_USIZE - 46 as usize),
+            radio_channel: (9),
         }
     }
 
