@@ -88,6 +88,13 @@ impl Fighter {
             State::Defend =>self.defend_mode(),
             _=>{},
         }
+
+        // Don't go near the border
+        // fight+, leaderborad-
+        let border = 30000.0;
+        if position().x > border || position().x < -border || position().y > border || position().y < -border {
+            seek(vec2(0.0,0.0), vec2(0.0,0.0), true);
+        }
         
         self.tick_counter += 1;
         // Radio channel setup for the next tick
