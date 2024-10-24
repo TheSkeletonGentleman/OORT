@@ -82,9 +82,11 @@ Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comporte
 - Le radar a été amélioré afin de se redimentionner de manière à être le plus large tout en gardant une distance de sécutité derrière l'ennemi
 ![bg right:40% 80%](Radar_up.png)
 
-### R&D : *Radar*
-- Le radar a été amélioré afin de se redimentionner de manière à être le plus large tout en gardant une distance de sécutité derrière l'ennemi
-![bg right:40% 80%](Radar_up.png)
+---
+### R&D : *Radar pt2*
+- Le radar ne disposant de méthode que pour donner la largeur un calcul a été fait.
+- Nous avons donc fait notre propre méthode qui donne la largeur du radar en prenant en paramètres sa longeur.
+- Formule : 1 - ((((distance_voulue * 1.25) - 20'000) / 10)  * 0.00125)
 
 ---
 ### R&D : *Radio*
