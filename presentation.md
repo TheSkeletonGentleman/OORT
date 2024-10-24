@@ -77,12 +77,13 @@ Les réacteurs permettent au vaisseau de se déplacer dans l'espace ainsi que d'
 
 ---
 ### Équipements : *Radar*
-Le radar est un outil qui donne la possibilité de scanner dans une direction donnée. Il renvoie ensuite les coordonées et la vélocité du contact si il a vu une unitée ennemie.
+Le radar est un outil qui donne la possibilité de scanner dans une direction donnée. Il renvoie ensuite les coordonées et la vélocité du contact ennemi.
 ![bg right:40% 80%](Radar.png)
 
 ---
 ### Équipements : *Radio*
-La radio est un élément invisible qui nous octroie la capacité d'envoyer et de recevoir des messages sur un canal choisi.
+La radio est un élément invisible qui nous permet d'envoyer et de recevoir des messages sur un canal choisi.
+Les canaux sont communs au deux équipes.
 
 ---
 ### Équipements : *Mitrailleuse*
@@ -96,7 +97,8 @@ Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comporte
 
 ---
 # R&D
-- Nous avons amélioré les éléments suivants:
+Á partir du code de base, nous avons amélioré les éléments suivants:
+    - Déplacements
     - Radar
     - Radio
     - Missiles
@@ -108,23 +110,23 @@ Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comporte
 
 ---
 ### R&D : *Radio*
-La radio quand à elle change desormais de chaine à chaque tick afin de ne pas se faire écraser par un potentiel ennemi qui utiliserai la même chaine.
+- La radio quand à elle change desormais de canal à chaque tick afin de ne pas se faire écraser par un potentiel ennemi qui utiliserai le même.
 
 ---
 ### R&D : *Missiles*
 - Les missiles font des calculs pour exploser cent millisecondes avant de toucher l'ennemi.
-- En faisant cela les shrapnell ont moins de chances de rater l'ennemi que le missile et lui infligent tout autant de dégats.
+- En faisant cela les débris augmentent la chances de toucher l'ennemi en lui infligeant tout autant de dégats.
 ![bg right:40% 80%](Shrapnell.png)
 
 ---
 # Comportement
-Vaisseau comporte trois états
+Le vaisseau comporte trois états.
 
 ![w:20cm](Machine_etat.svg)
 
 ---
 ### Attaque
-- En mode **attaque**, le vaisseau fait rotationner son radar afin de balayer l'horizon et il se dirige et tourne vers la dernière position connue de l'ennemi.
+- En mode **attaque**, le vaisseau fait rotationner son radar afin de balayer l'horizon et se dirige vers la dernière position connue de l'ennemi.
 - Si il y trouve un ennemi de type *"fighter"* il lui lance un missile et communique sa position par radio à tous les missiles.
 - Tous les 30 ticks le vaisseau passe en mode **recherche**
 
@@ -137,12 +139,12 @@ Vaisseau comporte trois états
 ---
 ### Défense
 - En mode **défense**, le vaisseau va cibler le missile trouvé en recherche et essayer de le détruire
-- Si le missile est détruit, perdu de vue ou nous passe à coté (plus de 90° de différense avec l'ennemi) on retourne en **recherche**
+- Si le missile est détruit, perdu de vue ou nous passe à coté *(plus de 90° de différense avec l'ennemi)* on retourne en **recherche**
 
 ---
 ### Mouvements
 - Le vaisseau suit trois comportements :
-    - en **recherche** et **défense**  on se laisse porter
+    - en **recherche** et **défense** on se laisse porter
     - en **attaque** on utilise la fonction ***unpredictible_trajectory***
 
 ---
@@ -156,6 +158,7 @@ Vaisseau comporte trois états
 # Conclusion
 - Codage de vaisseau interessant
 - Meilleures compréhension de la trigonométrie
+- Quand-même trop de maths
 - Classement pas mauvais :wink:
 
 ---
