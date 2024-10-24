@@ -58,7 +58,7 @@ Le radar est un outil qui donne la possibilité de scanner dans une direction do
 ---
 ### Équipements : *Radio*
 La radio est un élément invisible qui nous permet d'envoyer et de recevoir des messages sur un canal choisi.
-Les canaux sont communs au deux équipes.
+Les canaux sont communs au deux équipes et sont au nombre de 10 *(0..9)*
 
 ---
 ### Équipements : *Mitrailleuse*
@@ -84,13 +84,15 @@ Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comporte
 
 ---
 ### R&D : *Radar pt2*
-- Le radar ne disposant de méthode que pour donner la largeur un calcul a été fait.
+- Le radar ne disposant de méthode que pour donner la largeur.
 - Nous avons donc fait notre propre méthode qui donne la largeur du radar en prenant en paramètres sa longeur.
-- Formule : 1 - ((((distance_voulue * 1.25) - 20'000) / 10)  * 0.00125)
+- Formule : ```1 - ((((distance_voulue * 1.25) - 20'000) / 10)  * 0.00125)```
 
 ---
 ### R&D : *Radio*
-- La radio quand à elle change desormais de canal à chaque tick afin de ne pas se faire écraser par un potentiel ennemi qui utiliserai le même.
+- La radio change aléatoirement de canal à chaque tick afin de ne pas interférer avec l'ennemi.
+- Utilisation de ```oorandom::Rand32```
+- Donne un nombre aléatoire suivant une "*seed*" et un incrément.
 
 ---
 ### R&D : *Missiles*
