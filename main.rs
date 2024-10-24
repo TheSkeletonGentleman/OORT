@@ -1,7 +1,11 @@
 use oort_api::prelude::*;
 
 const BULLET_SPEED: f64 = 1000.0; // m/s
+<<<<<<< HEAD
 
+=======
+const RANDOM_SEED: u64 = 2397868;
+>>>>>>> c1e6fd879548593a244d4c9a6c431ac36c255fea
 
 // This enum stores a different struct for each ship class.
 pub enum Ship {
@@ -49,7 +53,11 @@ impl Fighter {
             move_target: vec2(0.0, 0.0),
             enemy_ang: 0.0,
             enemy_latest_pos: Vec::new(),
+<<<<<<< HEAD
             radio_channel: (9),
+=======
+            radio_channel: 4,
+>>>>>>> c1e6fd879548593a244d4c9a6c431ac36c255fea
             missile_latest_pos: Vec::new(),
             state: State::Attack,
             tick_counter: 0,
@@ -67,6 +75,7 @@ impl Fighter {
             }
         }
 
+        
         if self.enemy_latest_pos.len() > 0 {
             let average_position = get_approx_position(&self.enemy_latest_pos);
             // Draw a diamond on the position
@@ -79,7 +88,7 @@ impl Fighter {
             }
             draw_line(vec2(average_position[0], average_position[1] - 100000.0), vec2(average_position[0], average_position[1] + 100000.0), 0xf0f0f0);
         }
-        
+
         // State manager
         match self.state {
             State::Search =>self.search_mode(),
@@ -88,7 +97,19 @@ impl Fighter {
             _=>{},
         }
 
+        // Don't go near the border
+        // fight+, leaderborad-
+        let border = 30000.0;
+        if position().x > border || position().x < -border || position().y > border || position().y < -border {
+            seek(vec2(0.0,0.0), vec2(0.0,0.0), true);
+        }
+        
         self.tick_counter += 1;
+        // Radio channel setup for the next tick
+        let mut oorandom = oorandom::Rand32::new_inc(RANDOM_SEED, current_tick() as u64);
+        let rand_channel = oorandom::Rand32::rand_u32(&mut oorandom) % 10;
+        set_radio_channel(rand_channel as usize);
+        debug!("channel :{}", get_radio_channel());
     }
 
     pub fn search_mode(&mut self)
@@ -202,7 +223,11 @@ impl Missile {
         Self {
             target_position,
             target_velocity,
+<<<<<<< HEAD
             radio_channel: (9),
+=======
+            radio_channel: 4,
+>>>>>>> c1e6fd879548593a244d4c9a6c431ac36c255fea
         }
     }
 
@@ -255,7 +280,12 @@ impl Missile {
         // si on est à proximité de l'ennemi on explose
         if position().distance(self.target_position) / velocity().length() < 0.1 {
             explode();
-        }   
+        }
+        // Radio channel setup for the next tick
+        let mut oorandom = oorandom::Rand32::new_inc(RANDOM_SEED, current_tick() as u64);
+        let rand_channel = oorandom::Rand32::rand_u32(&mut oorandom) % 10;
+        set_radio_channel(rand_channel as usize);
+        debug!("channel :{}", get_radio_channel());
     }
 }
 
