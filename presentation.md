@@ -9,31 +9,6 @@ style: |
 <!-- _paginate: false-->
 <!-- _footer: oct.25 2024-->
 
-<!--
-Le tournoi de oort.rs s'approche. Le mode du tournoi sera le suivant: 4
-groupes de 3 fois 3 équipes et un groupe de 4 en mode round-robin. Les
-deux premières équipes de chaque groupe passent dans le matchs à
-élimination directe: quart, demi et finale (les deux perdants de la demi
-seront 3e ex-aequo). Le score des combats et le ratio victoires /
-défaites sur 10 combats aléatoires (comme sur le site de oort.rs) en cas
-d'égalité, on recommence jusqu'à avoir une équipe victorieuse.
-
-Une fois le tournoi terminé, vous devrez effectuer vos présentations
-orales d'une durée de 20min. L'objectif de votre présentation est
-d'expliquer le fonctionnement de vos vaisseaux, (p.ex. quels sont les
-moyens de déplacement, les armes disponibles, les radars, la radio, etc.
-et comment tout cela fonctionne en pratique: comment on vise, etc),
-d'expliquer aussi comment fonctionne votre IA: quels mécanismes
-d'attaque, de détection, de communication, et de défense vous utilisez,
-par exemple. Il n'est pas nécessaire de présenter le code en tant que
-tel, sauf si vous jugez que c'est mortellement important. Hésitez pas à
-répéter la présentation chez vous.
-
-N'oubliez pas de mettre les liens vers vos git sur cyberlearn, et les
-slides au format PDF. Dans votre git, mettez le code qu'on puisse le
-copier-coller directement dans oort.rs.
--->
-
 # :artificial_satellite: **OORT.RS** :rocket:
 ## Squadron Bêta
 Marty Hugo & Rouiller Cyril
@@ -97,13 +72,16 @@ Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comporte
 
 ---
 # R&D
-Á partir du code de base, nous avons amélioré les éléments suivants:
-    - Déplacements
+- À partir du code de base, nous avons amélioré les éléments suivants:
     - Radar
     - Radio
     - Missiles
 
 ---
+### R&D : *Radar*
+- Le radar a été amélioré afin de se redimentionner de manière à être le plus large tout en gardant une distance de sécutité derrière l'ennemi
+![bg right:40% 80%](Radar_up.png)
+
 ### R&D : *Radar*
 - Le radar a été amélioré afin de se redimentionner de manière à être le plus large tout en gardant une distance de sécutité derrière l'ennemi
 ![bg right:40% 80%](Radar_up.png)
@@ -143,7 +121,7 @@ Le vaisseau comporte trois états.
 
 ---
 ### Mouvements
-- Le vaisseau suit trois comportements :
+- Le vaisseau suit deux comportements :
     - en **recherche** et **défense** on se laisse porter
     - en **attaque** on utilise la fonction ***unpredictible_trajectory***
 
