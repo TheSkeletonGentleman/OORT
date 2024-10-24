@@ -80,7 +80,7 @@ impl Fighter {
             }
             draw_line(vec2(average_position[0], average_position[1] - 100000.0), vec2(average_position[0], average_position[1] + 100000.0), 0xf0f0f0);
         }
-        
+
         // State manager
         match self.state {
             State::Search =>self.search_mode(),
