@@ -1,8 +1,7 @@
 use oort_api::prelude::*;
 
 const BULLET_SPEED: f64 = 1000.0; // m/s
-pub const MAX_USIZE: usize = 4294967295;
-
+const RANDOM_SEED: u64 = 2397868;
 
 // This enum stores a different struct for each ship class.
 pub enum Ship {
@@ -50,7 +49,7 @@ impl Fighter {
             move_target: vec2(0.0, 0.0),
             enemy_ang: 0.0,
             enemy_latest_pos: Vec::new(),
-            radio_channel: (MAX_USIZE - 46 as usize),
+            radio_channel: 4,
             missile_latest_pos: Vec::new(),
             state: State::Attack,
             tick_counter: 0,
@@ -68,6 +67,7 @@ impl Fighter {
             }
         }
 
+        
         if self.enemy_latest_pos.len() > 0 {
             let average_position = get_approx_position(&self.enemy_latest_pos);
             // Draw a diamond on the position
@@ -88,8 +88,13 @@ impl Fighter {
             State::Defend =>self.defend_mode(),
             _=>{},
         }
-
+        
         self.tick_counter += 1;
+        // Radio channel setup for the next tick
+        let mut oorandom = oorandom::Rand32::new_inc(RANDOM_SEED, current_tick() as u64);
+        let rand_channel = oorandom::Rand32::rand_u32(&mut oorandom) % 10;
+        set_radio_channel(rand_channel as usize);
+        debug!("channel :{}", get_radio_channel());
     }
 
     pub fn search_mode(&mut self)
@@ -203,7 +208,7 @@ impl Missile {
         Self {
             target_position,
             target_velocity,
-            radio_channel: (MAX_USIZE - 46 as usize),
+            radio_channel: 4,
         }
     }
 
@@ -256,7 +261,12 @@ impl Missile {
         // si on est à proximité de l'ennemi on explose
         if position().distance(self.target_position) / velocity().length() < 0.1 {
             explode();
-        }   
+        }
+        // Radio channel setup for the next tick
+        let mut oorandom = oorandom::Rand32::new_inc(RANDOM_SEED, current_tick() as u64);
+        let rand_channel = oorandom::Rand32::rand_u32(&mut oorandom) % 10;
+        set_radio_channel(rand_channel as usize);
+        debug!("channel :{}", get_radio_channel());
     }
 }
 
