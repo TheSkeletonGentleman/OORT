@@ -48,12 +48,12 @@ Marty Hugo & Rouiller Cyril
 ---
 ### Équipements : *Réacteurs*
 Les réacteurs permettent au vaisseau de se déplacer dans l'espace ainsi que d'effectuer des rotations sur lui même.
-![bg right:40% 80%](Reacteurs.png)
+![bg right:40% 80%](Reacteurs_re.png)
 
 ---
 ### Équipements : *Radar*
 Le radar est un outil qui donne la possibilité de scanner dans une direction donnée. Il renvoie ensuite les coordonées et la vélocité du contact ennemi.
-![bg right:40% 80%](Radar.png)
+![bg right:40% 80%](Radar_re.png)
 
 ---
 ### Équipements : *Radio*
@@ -63,12 +63,12 @@ Les canaux sont communs au deux équipes.
 ---
 ### Équipements : *Mitrailleuse*
 La mitrailleuse permet au vaisseau de tirer des balles qui sont des projectiles, elles ne sont plus controlables une fois tirées.
-![bg right:40% 80%](Mitrailleuse.png)
+![bg right:40% 80%](Mitrailleuse_re.png)
 
 ---
 ### Équipements : *Missiles*
 Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comportent la radio ainsi que le radar.
-![bg right:40% 80%](Missile.png)
+![bg right:40% 80%](Missile_re.png)
 
 ---
 # R&D
@@ -80,6 +80,7 @@ Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comporte
 ---
 ### R&D : *Radar*
 - Le radar a été amélioré afin de se redimentionner de manière à être le plus large tout en gardant une distance de sécutité derrière l'ennemi
+![bg right:40% 80%](Radar_up_re.png)
 ![bg right:40% 80%](Radar_up.png)
 
 ---
@@ -96,7 +97,7 @@ Les missiles agissent comme des mini vaisseaux, ils sont dirigeables et comporte
 ### R&D : *Missiles*
 - Les missiles font des calculs pour exploser cent millisecondes avant de toucher l'ennemi.
 - En faisant cela les débris augmentent la chances de toucher l'ennemi en lui infligeant tout autant de dégats.
-![bg right:40% 80%](Shrapnell.png)
+![bg right:40% 80%](Shrapnell_re.png)
 
 ---
 # Comportement
